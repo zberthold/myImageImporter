@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,111 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myImageImporter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bgV-hN-8bW">
+                                <rect key="frame" x="75" y="45" width="225" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="s1Y-Tr-xEN"/>
+                                    <constraint firstAttribute="height" constant="275" id="vWf-78-BEo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-nw-6Q4">
+                                <rect key="frame" x="75" y="327" width="225" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="0Lg-of-y6D"/>
+                                    <constraint firstAttribute="width" constant="225" id="3lb-l9-1dq"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sab-u3-JUa">
+                                <rect key="frame" x="0.0" y="610" width="175" height="50"/>
+                                <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="IZM-3c-hcg"/>
+                                    <constraint firstAttribute="height" constant="50" id="LRZ-jo-AZ2"/>
+                                </constraints>
+                                <state key="normal" title="Import Top Image"/>
+                                <connections>
+                                    <action selector="importImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PSp-Xl-2W0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O38-5P-84x">
+                                <rect key="frame" x="313" y="167" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RtO-IB-C2R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xM3-Hm-8Ib">
+                                <rect key="frame" x="313" y="449.5" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="bottomNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fNh-1s-Rg5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tc-Mi-eZd">
+                                <rect key="frame" x="11" y="167" width="59" height="30"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="previousButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RRm-99-Y2Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68l-QP-RIa">
+                                <rect key="frame" x="11" y="449" width="59" height="30"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="bottomPrevious:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8tI-CI-HVb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnX-XP-xae">
+                                <rect key="frame" x="200" y="610" width="175" height="50"/>
+                                <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="BQh-D7-tbZ"/>
+                                    <constraint firstAttribute="width" constant="175" id="WCb-cC-ryE"/>
+                                    <constraint firstAttribute="height" constant="50" id="mto-4X-KGQ"/>
+                                </constraints>
+                                <state key="normal" title="Import Bottom Image"/>
+                                <connections>
+                                    <action selector="importBottomImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qpX-Jh-cHV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sab-u3-JUa" firstAttribute="top" secondItem="SBH-nw-6Q4" secondAttribute="bottom" constant="8" id="0aP-eh-zaJ"/>
+                            <constraint firstItem="nnX-XP-xae" firstAttribute="centerY" secondItem="sab-u3-JUa" secondAttribute="centerY" id="Ecc-OY-bya"/>
+                            <constraint firstItem="nnX-XP-xae" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GMi-9R-Zf9"/>
+                            <constraint firstItem="O38-5P-84x" firstAttribute="leading" secondItem="bgV-hN-8bW" secondAttribute="trailing" constant="13" id="GSm-Sl-haX"/>
+                            <constraint firstItem="xM3-Hm-8Ib" firstAttribute="centerY" secondItem="SBH-nw-6Q4" secondAttribute="centerY" id="LUf-ZU-PgO"/>
+                            <constraint firstItem="8Tc-Mi-eZd" firstAttribute="centerY" secondItem="bgV-hN-8bW" secondAttribute="centerY" id="Nfn-jc-ykK"/>
+                            <constraint firstItem="bgV-hN-8bW" firstAttribute="leading" secondItem="8Tc-Mi-eZd" secondAttribute="trailing" constant="5" id="XMI-qu-X0b"/>
+                            <constraint firstItem="xM3-Hm-8Ib" firstAttribute="centerX" secondItem="O38-5P-84x" secondAttribute="centerX" id="bBa-NE-c0Y"/>
+                            <constraint firstItem="68l-QP-RIa" firstAttribute="centerX" secondItem="8Tc-Mi-eZd" secondAttribute="centerX" id="d0S-WQ-0U9"/>
+                            <constraint firstItem="xM3-Hm-8Ib" firstAttribute="centerY" secondItem="68l-QP-RIa" secondAttribute="centerY" id="dJU-DL-p8P"/>
+                            <constraint firstItem="SBH-nw-6Q4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fcN-zf-b2b"/>
+                            <constraint firstItem="O38-5P-84x" firstAttribute="centerY" secondItem="bgV-hN-8bW" secondAttribute="centerY" id="hxZ-gH-954"/>
+                            <constraint firstItem="sab-u3-JUa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kDQ-5M-hkX"/>
+                            <constraint firstItem="sab-u3-JUa" firstAttribute="top" secondItem="bgV-hN-8bW" secondAttribute="bottom" constant="290" id="m9k-Zy-GdZ"/>
+                            <constraint firstItem="bgV-hN-8bW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="nbT-6Q-aCE"/>
+                            <constraint firstItem="bgV-hN-8bW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="neJ-yr-al0"/>
+                            <constraint firstItem="sab-u3-JUa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-200" id="qiW-6S-nXA"/>
+                            <constraint firstItem="SBH-nw-6Q4" firstAttribute="top" secondItem="bgV-hN-8bW" secondAttribute="bottom" constant="7" id="rXs-uA-W9K"/>
+                            <constraint firstItem="68l-QP-RIa" firstAttribute="centerY" secondItem="SBH-nw-6Q4" secondAttribute="centerY" id="tFp-zl-c0v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="myImageView" destination="bgV-hN-8bW" id="w1t-Hh-g9K"/>
+                        <outlet property="secondImageView" destination="SBH-nw-6Q4" id="GI1-9M-D8S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

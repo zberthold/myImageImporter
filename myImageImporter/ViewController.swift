@@ -8,18 +8,122 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var myImageView: UIImageView!
+    var imageArray = [UIImage]()
+    var bottomImageArray = [UIImage]()
+    var whichImage = 0
+    var whichBottomImage = 0
+    var imageControllerArray = [UIImageView]()
+    var bottomImageControllerArray = [UIImageView]()
+    var whichImageController = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        imageControllerArray.append(myImageView)
+        imageControllerArray.append(secondImageView)
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
+    @IBAction func importImage(_ sender: Any) {
+        whichImageController = 0
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true){
+            //after its complete
+        }
+        
+    }
+    
+    @IBAction func importBottomImage(_ sender: Any) {
+        whichImageController = 1
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true){
+            //after its complete
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print(imageControllerArray[whichImageController])
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            imageControllerArray[whichImageController].frame.size.height = CGFloat(image.topCapHeight)
+            if(whichImageController == 0){
+                imageArray.append(image)
+            }
+            else{
+                bottomImageArray.append(image)
+            }
+            if(imageArray.count == 1){
+                imageControllerArray[whichImageController].image = image
+            }
+            if(bottomImageArray.count == 1){
+                imageControllerArray[whichBottomImage].image = image
+            }
+        }
+        else{
+            //error message
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButton(_ sender: Any) {
+        if(imageArray.count > 1){
+            if(whichImage < imageArray.count - 1){
+                whichImage += 1
+                myImageView.image = imageArray[whichImage]
+            }
+            else{
+                whichImage = 0
+                myImageView.image = imageArray[whichImage]
+            }
+        }
+    }
+    @IBAction func previousButton(_ sender: Any) {
+        if(imageArray.count > 1){
+            if(whichImage > 0){
+                whichImage -= 1
+                myImageView.image = imageArray[whichImage]
+            }
+            else{
+                whichImage = imageArray.count - 1
+                myImageView.image = imageArray[whichImage]
+            }
+        }
+        
+    }
+    
+    @IBAction func bottomPrevious(_ sender: Any) {
+        if(bottomImageArray.count > 1){
+            if(whichBottomImage > 0){
+                whichImage -= 1
+                secondImageView.image = bottomImageArray[whichBottomImage]
+            }
+            else{
+                whichImage = imageArray.count - 1
+                secondImageView.image = bottomImageArray[whichBottomImage]
+            }
+        }
+    }
+    @IBAction func bottomNext(_ sender: Any) {
+        if(bottomImageArray.count > 1){
+            if(whichBottomImage < imageArray.count - 1){
+                whichImage += 1
+                secondImageView.image = bottomImageArray[whichBottomImage]
+            }
+            else{
+                whichImage = 0
+                secondImageView.image = bottomImageArray[whichBottomImage]
+            }
+        }
+    }
 }
 
