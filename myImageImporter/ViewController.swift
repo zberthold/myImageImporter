@@ -57,16 +57,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             imageControllerArray[whichImageController].frame.size.height = CGFloat(image.topCapHeight)
             if(whichImageController == 0){
-                imageArray.append(image)
-            }
-            else{
-                bottomImageArray.append(image)
-            }
-            if(imageArray.count == 1){
+                imageArray.insert(image, at: 0)
                 imageControllerArray[whichImageController].image = image
             }
-            if(bottomImageArray.count == 1){
-                imageControllerArray[whichBottomImage].image = image
+            else{
+                bottomImageArray.insert(image, at: 0)
+                imageControllerArray[whichImageController].image = image
             }
         }
         else{
@@ -114,13 +110,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
     @IBAction func bottomNext(_ sender: Any) {
+        print(bottomImageArray.count)
+        print(whichBottomImage)
         if(bottomImageArray.count > 1){
-            if(whichBottomImage < imageArray.count - 1){
-                whichImage += 1
+            if(whichBottomImage < (bottomImageArray.count - 1)){
+                print("made it")
+                whichBottomImage += 1
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
             else{
-                whichImage = 0
+                print("over here")
+                whichBottomImage = 0
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
         }

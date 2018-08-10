@@ -20,6 +20,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bgV-hN-8bW">
                                 <rect key="frame" x="75" y="45" width="225" height="275"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="s1Y-Tr-xEN"/>
                                     <constraint firstAttribute="height" constant="275" id="vWf-78-BEo"/>
@@ -27,6 +28,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-nw-6Q4">
                                 <rect key="frame" x="75" y="327" width="225" height="275"/>
+                                <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="275" id="0Lg-of-y6D"/>
                                     <constraint firstAttribute="width" constant="225" id="3lb-l9-1dq"/>
