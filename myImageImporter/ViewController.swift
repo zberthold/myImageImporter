@@ -100,11 +100,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func bottomPrevious(_ sender: Any) {
         if(bottomImageArray.count > 1){
             if(whichBottomImage > 0){
-                whichImage -= 1
+                whichBottomImage -= 1
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
             else{
-                whichImage = imageArray.count - 1
+                whichBottomImage = bottomImageArray.count - 1
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
         }
