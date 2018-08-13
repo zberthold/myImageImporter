@@ -114,12 +114,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         print(whichBottomImage)
         if(bottomImageArray.count > 1){
             if(whichBottomImage < (bottomImageArray.count - 1)){
-                print("made it")
                 whichBottomImage += 1
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
             else{
-                print("over here")
                 whichBottomImage = 0
                 secondImageView.image = bottomImageArray[whichBottomImage]
             }
